@@ -1,139 +1,85 @@
-📝 Singly Linked List 
+📝 Singly Linked List  – Notes
 
-A linked list is a linear data structure where nodes are not stored in contiguous memory.
+1️⃣ Definition
 
-Each node contains:
+A singly linked list is a linear data structure where each element (node) points to the next.
 
-💾 Data → value of the node
+Nodes are not stored in contiguous memory (unlike arrays).
 
-➡️ Next → pointer to the next node
+Each node has:
 
-2️⃣ Node Structure (C++ Code)
-class Node {
-public:
-    int data;    // 💾 store value
-    Node* next;  // ➡️ pointer to next node
+Data 💾 → stores the value
 
-    Node(int val) { // constructor
-        data = val;
-        next = nullptr;
-    }
-};
+Next ➡️ → pointer to the next node
 
-3️⃣ Linked List Structure
+2️⃣ Key Components
 
-Head 🟢 → points to first node
+Node → basic building block (contains data + next pointer)
 
-Tail 🔴 → points to last node (optional)
+Head 🟢 → first node of the list
 
-class linkedlist {
-public:
-    Node* head;
-    linkedlist() { head = nullptr; }
-};
+Tail 🔴 → last node of the list (next = null)
+
+3️⃣ Analogy to Understand
+
+Think of a train 🚂:
+
+Each coach = a node
+
+Passengers inside coach = data
+
+Coupling between coaches = next pointer
+
+First coach = head
+
+Last coach = tail
 
 4️⃣ Basic Operations
-🔹 a) Insert at Front ⬆️
-
-Steps:
-
-Create new node 🆕
-
-New node ➡️ current head
-
-Head = new node 🟢
-
-void insertAtFront(int val) {
-    Node* newnode = new Node(val);
-    newnode->next = head;
-    head = newnode;
-}
-
-🔹 b) Insert at Back ⬇️
-
-Steps:
-
-Create new node 🆕
-
-If empty → head = new node 🟢
-
-Else traverse to last node
-
-Last node ➡️ new node
-
-void insertAtBack(int val) {
-    Node* newnode = new Node(val);
-    if(head == nullptr) { head = newnode; return; }
-    Node* temp = head;
-    while(temp->next != nullptr) temp = temp->next;
-    temp->next = newnode;
-}
-
-🔹 c) Delete from Front 🧹
-void popFront() {
-    if(head == nullptr) return;       // empty list ❌
-    Node* temp = head;
-    head = head->next;                // move head
-    delete temp;                      // delete old node
-}
-
-🔹 d) Delete from Back 🧹
-void popBack() {
-    if(head == nullptr) return;        // empty list ❌
-    if(head->next == nullptr) { delete head; head = nullptr; return; } // 1 node
-    Node* temp = head;
-    while(temp->next->next != nullptr) temp = temp->next; // move to 2nd last
-    delete temp->next;                 // delete last
-    temp->next = nullptr;              // update tail
-}
-
-5️⃣ Display / Traverse 👀
-void display() {
-    Node* temp = head;
-    while(temp != nullptr) {
-        cout << temp->data << " -> ";
-        temp = temp->next;
-    }
-    cout << "null" << endl;
-}
-
-6️⃣ Count Nodes 🔢
-
-Using variable count or dynamic traversal:
-
-int countNodes() {
-    int c = 0;
-    Node* temp = head;
-    while(temp != nullptr) { c++; temp = temp->next; }
-    return c;
-}
-
-7️⃣ Advantages ✅
-
-Dynamic size 🌀
-
-Easy insertion/deletion at front/back ✨
-
-Efficient memory for frequent insertions/deletions 💡
-
-8️⃣ Disadvantages ❌
-
-Accessing nth node → O(n) ⏱️
-
-Extra memory for next pointer 🧠
-
-No backward traversal ↩️
-
-9️⃣ Time Complexity ⏱️
-Operation	Best Case	Worst Case
-Insert at Front ⬆️	O(1)	O(1)
-Insert at Back ⬇️	O(1)*	O(n)
-Delete from Front 🧹	O(1)	O(1)
-Delete from Back 🧹	O(1)*	O(n)
-Search 🔍	O(1)	O(n)
+Operation	Description	Complexity
+Insert at Front ⬆️	Add a node before head	O(1)
+Insert at Back ⬇️	Add a node after tail	O(n)
+Delete Front 🧹	Remove first node (head)	O(1)
+Delete Back 🧹	Remove last node	O(n)
+Search 🔍	Find node by value	O(n)
+Traverse / Display 👀	Visit all nodes in order	O(n)
+Count Nodes 🔢	Total number of nodes	O(n)
 
 
-
-
-🔟 Visual Representation 👁️
+5️⃣ Visual Representation
 Head 🟢 -> [10 | ➡️] -> [20 | ➡️] -> [30 | ➡️] -> null
+
+
+Head points to first node (10)
+
+Each node points to the next node (next pointer)
+
+Last node (30) points to null → indicates end of list
+
+6️⃣ Advantages ✅
+
+Dynamic size (can grow/shrink)
+
+Fast insertion/deletion at front
+
+Memory efficient for frequent updates
+
+7️⃣ Disadvantages ❌
+
+Accessing nth node takes O(n) → no direct access like arrays
+
+Uses extra memory for next pointer
+
+Can traverse only in one direction
+
+8️⃣ Memory Structure
+
+Each node stores:
+
++-------+-------+
+| Data  | Next  |
++-------+-------+
+
+
+Next stores address of next node
+
+Last node’s next = null
