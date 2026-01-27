@@ -1,4 +1,4 @@
-📝 Singly Linked List (SLL) 
+📝 Singly Linked List 
 
 A linked list is a linear data structure where nodes are not stored in contiguous memory.
 
