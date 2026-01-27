@@ -62,6 +62,3 @@ Forward: Head → Tail ➡️
 
 Backward: Tail → Head ⬅️
 
-Forward: Head → Tail ➡️
-
-Backward: Tail → Head ⬅️
