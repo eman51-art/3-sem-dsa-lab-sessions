@@ -42,6 +42,26 @@ public:
             front = rear = -1;
         }
     }
+    
+   void peek() {
+    if (front == -1 || front > rear) {
+        cout << "Queue Underflow!" << endl;
+        return;
+    }
+    cout << "The front element is: " << arr[front] << endl;
+}
+
+void checkEmptyOrFull() {
+    if (front == -1 || front > rear) {
+        cout << "Queue is empty!" << endl;
+    }
+    else if (rear == size - 1) {
+        cout << "Queue is full!" << endl;
+    }
+    else {
+        cout << "Queue has space left: " << (size - (rear - front + 1)) << endl;
+    }
+}
 
     // Display
     void display() {
@@ -62,29 +82,33 @@ int main() {
     int choice; int val; 
    
     while (true) {
-        cout << "\nEnter your choice: 1-Enqueue 2-Dequeue 3-Display -1-Exit: ";
+        cout << "\nEnter your choice: 1-Enqueue 2-Dequeue 3-Display  4-peek element 5-is empty or full -1-Exit: ";
         cin >> choice;
 
         if (choice == -1) break;
 
-        switch(choice) {
-            case 1:
-                cout << "Enter value to enqueue: ";
-                cin >> val;
-                q.enqueue(val);
-                break;   // <--- Important
-            case 2:
-          
-                q.dequeue();
-                break;
-            case 3:
-                q.display();
-                break;
-            default:
-                cout << "Incorrect choice!" << endl;
-        }
-    }
+switch(choice) {
+    case 1:
+        cout << "Enter value to enqueue: ";
+        cin >> val;
+        q.enqueue(val);
+        break;
+    case 2:
+        q.dequeue();
+        break;
+    case 3:
+        q.display();
+        break;
+    case 4:
+        q.peek();
+        break;
+    case 5:
+        q.checkEmptyOrFull();
+        break;
+    default:
+        cout << "Incorrect choice!" << endl;
+}
+}
 
     return 0;
 }
-
